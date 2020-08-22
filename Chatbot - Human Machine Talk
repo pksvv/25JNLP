@@ -1,0 +1,119 @@
+Chatbot - Human talking a machine
+
+Example of a few Utterances
+
+Smalltalk utterances                                        class >> intent
+Hi, Hey There, Good Morning, whats up  >>                   greet
+
+Bye, See You, Ciao, Take care >>                            farewell
+
+i want to be your friend, can we meet >>                    casualspaminformal
+
+Business utterances
+How is the weather today, what's it like outside in dubai,  get_weather_info
+is it raining in Mumbai
+
+intent is a class
+----------------------------
+
+How is the weather today >>>>>>>>>>>>> intent
+Which place? assume where you are >>>> we want this fill in the blank
+
+what's it like outside in dubai >>> 
+    intent >> get_weather_info
+    fill in the blank >> place >> value = dubai
+
+{
+    intent: get_weather_info,
+    entity_type: place,
+    entity_value: dubai
+}
+
+Conversation:
+
+1 - User: Hey, I want to know about weather
+2 - Bot: Okay, I understand you want to know about the temperature, wind etc. but I would need to know the place for which you're looking for
+3 - User: dubai
+4 - Bot: very hot, 
+
+Store it in order to respond to it
+
+persistence >>> Context
+
+Storing for further responses
+
+dubai
+
+User: what is the wind speed?
+
+Bot: I believe going by our Conversation you're looking for wind speed in dubai, can you please confirm?   YES      NO
+
+User: YES
+
+Bot: High
+
+______________
+
+Level 3 Contextual Chat Assistant
+
+1. Identify intent >>>>>>>> Text Classification problem 
+
+2. Identify Entities >>>>>> entity_type = pizza entity_value=margherita
+
+I want order a pizza
+which
+margherita
+
+3. Retain Context - not ML part, engineering, Redis, File, DB, Mongo
+
+____________________________
+
+pizza - upselling
+
+I am really hungry - User
+okay, is it just you or are there more ppl - Bot
+no its just me - User
+one person meal, pizza, garlic bread, pasta - Bot
+i want to order a pizza - User
+which pizza - Bot
+Farmhouse - User
+do you want something to drink as well - Bot
+okay can you suggest options - User
+...
+...
+...
+
+1. Rule based - Chain the rules - https://github.com/samtecspg/articulate
+    - Cumbersome - so many rules that you'll have to manage and change over a period of time
+
+2. Model based - Prediction - Rasa 
+
+Training Data of possible Conversations - Intent and Action
+    - intent1-greet
+        * Action-1- hello i am bot how are you
+        * Action-2
+        * Action-3
+
+    - intent1
+        * Action-1
+        * Action-2
+        * Action-3
+
+    - intent1
+        * Action-1
+        * Action-2
+        * Action-3
+
+    - intent2
+        * Action-3
+        * Action-4
+
+    - intent3
+        * Action-1
+        * Action-2
+        * Action-3   
+
+
+
+
+
