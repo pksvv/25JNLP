@@ -1,3 +1,6 @@
 
 This is more text being appended to test.txt
 And another line here.
+
+This line is being appended to test.txt
+And another line here.
